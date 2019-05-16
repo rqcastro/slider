@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+
+</head>
+<body>
+
+<header class="jumbotron">
+  <div class="container">
+    <div class="row row-header">
+        <h1>Reex X Tradicional</h1>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 col-sm-6">
+        <p>Araste o botão para ver o quanto você economiza!!</p>
+    </div>
+  
+  </div>
+
+  <div class="row">
+
+    <div class="col-12 col-sm-9 slidecontainer">
+        
+          <input type="range" min="200000" max="3500000" value="200000" class="slider" id="myRange">
+          
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-12 col-sm-3">
+        <p>Modelo Reex: <span id="reex"></span></p>
+      </div>
+      <div class="col-12 col-sm-3">
+          <p>Modelo Tradicional: <span id="tradicional"></span></p>
+      </div>
+      <div class="col-12 col-sm-3"> 
+        <p>Economia: <span id="economia"></span></p>
+      </div>
+  </div>
+
+  
+  
+</div>
+
+
+<script>
+    var slider = document.getElementById("myRange");
+    var reex = document.getElementById("reex");
+    var tradicional = document.getElementById("tradicional");
+    var economia = document.getElementById("economia");
+
+    reex.innerHTML = 9500;
+    tradicional.innerHTML = 17600;
+    economia.innerHTML  = 8100;
+
+    slider.oninput = function() {
+      reex.innerHTML = this.value*0.03 + 3500;
+      tradicional.innerHTML = this.value*0.06 +3600 + 2000;
+      economia.innerHTML = tradicional.innerHTML -  reex.innerHTML ;
+    
+    }
+
+</script>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+<script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
