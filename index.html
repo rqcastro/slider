@@ -34,26 +34,71 @@
   </div>
 
   <div class="row">
+  
+    <div class="col-12 col-sm-9 slidecontainer ">
 
-    <div class="col-12 col-sm-9 slidecontainer">
-        
+          <p>Valor do Imóvel: <span id="valorimovel"></span></p>
           <input type="range" min="200000" max="3500000" value="200000" class="slider" id="myRange">
+         
           
     </div>
   </div>
   <div class="row">
-      <div class="col-12 col-sm-3">
+      <div class="col-12 col-sm-3  ">
         <p>Modelo Reex: <span id="reex"></span></p>
       </div>
-      <div class="col-12 col-sm-3">
-          <p>Modelo Tradicional: <span id="tradicional"></span></p>
-      </div>
-      <div class="col-12 col-sm-3"> 
+      
+      <div class="col-12 col-sm-3  text-center"> 
         <p>Economia: <span id="economia"></span></p>
+      </div>
+
+      <div class="col-12 col-sm-3  ">
+          <p>Modelo Tradicional: <span id="tradicional"></span></p>
       </div>
   </div>
 
-  
+  <p></p>
+  <p></p>
+
+  <div class="row">
+      <div class = "col-12 col-sm-9">
+        <table>
+          <tr>
+            <th></th>
+            <th>Tradicional</th>
+            <th>Reex</th>
+          </tr>
+          <tr>
+              <td>Custo Promocional</td>
+              <td>R$ 3.600,00 (*)</td>
+              <td>R$ 0,00</td>
+          </tr>
+          <tr>
+              <td>Corretagem</td>
+              <td> 6% </td>
+              <td> 0% </td>
+          </tr>
+          <tr>
+              <td>Custo de Avaliação</td>
+              <td> R$ 0,00</td>
+              <td> R$ 1.500,00 </td>
+          </tr>
+          <tr>
+              <td>Custo de Análise Jurídica</td>
+              <td> R$ 0,00</td>
+              <td> R$ 2.000,00 </td>
+          </tr>
+          <tr>
+              <td>Custo de Transferência</td>
+              <td> -- </td>
+              <td> 3% a 5% (**) </td>
+          </tr>
+          <tr><td></td></tr>
+          <tr><td>(*): 9 meses de anuncio em portais especializados</td></tr>
+          <tr><td>(**): do valor da venda</td></tr>
+        </table>
+      </div>
+    </div>
   
 </div>
 
@@ -63,15 +108,19 @@
     var reex = document.getElementById("reex");
     var tradicional = document.getElementById("tradicional");
     var economia = document.getElementById("economia");
+    var valorimovel = document.getElementById("valorimovel");
+    
 
-    reex.innerHTML = 9500;
-    tradicional.innerHTML = 17600;
-    economia.innerHTML  = 8100;
+    reex.innerHTML = Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format(9500);
+    tradicional.innerHTML = Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format(17600);
+    economia.innerHTML  = Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format(8100);
+    valorimovel.innerHTML = Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format(slider.value);
 
     slider.oninput = function() {
-      reex.innerHTML = this.value*0.03 + 3500;
-      tradicional.innerHTML = this.value*0.06 +3600 + 2000;
-      economia.innerHTML = tradicional.innerHTML -  reex.innerHTML ;
+      reex.innerHTML = Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format(this.value*0.03 + 3500);
+      tradicional.innerHTML = Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format(this.value*0.06 +3600 + 2000);
+      economia.innerHTML = Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format((this.value*0.06 +3600 + 2000) - (this.value*0.03 + 3500));
+      valorimovel.innerHTML = Intl.NumberFormat('pt-BR',{style: 'currency', currency: 'BRL'}).format(slider.value);
     
     }
 
